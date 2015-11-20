@@ -24,5 +24,8 @@ module.exports = function(app) {
     response.render('seleccionarpregunta', {});
   });
   
+    router.get('/ver/respuestas', auth_docente, function(request, response, next) {
+    response.render('verrespuestas', {});
+  });
   
 }
