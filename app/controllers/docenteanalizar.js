@@ -15,4 +15,17 @@ module.exports = function(app) {
   router.get('/docente/analizar/:idasignatura', auth_docente, function(request, response, next) {
     response.render('docenteanalizar', {});
   });
+  
+    router.get('/seleccionar/fecha', auth_docente, function(request, response, next) {
+    response.render('seleccionarfecha', {});
+  });
+  
+    router.get('/seleccionar/pregunta', auth_docente, function(request, response, next) {
+    response.render('seleccionarpregunta', {});
+  });
+  
+    router.get('/ver/respuestas', auth_docente, function(request, response, next) {
+    response.render('verrespuestas', {});
+  });
+  
 }
