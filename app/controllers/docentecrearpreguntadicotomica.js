@@ -12,7 +12,8 @@ module.exports = function(app) {
   }));
   app.use('/', router);
 
-  router.get('/docente/gestionar/:idasignatura', auth_docente, function(request, response, next) {
-    response.render('docentegestionarrespuesta', {});
+  router.get('/docente/crearpreguntadicotomica', auth_docente, function(request, response, next) {
+    console.log("id usuario:",request.session.name, "tipo:", request.session.tipo);
+    response.render('docentecrearpreguntadicotomica', {});
   });
 }
