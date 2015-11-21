@@ -12,20 +12,16 @@ module.exports = function(app) {
   }));
   app.use('/', router);
 
-  router.get('/docente/analizar/:idasignatura', auth_docente, function(request, response, next) {
-    response.render('docenteanalizar', {});
+  router.get('/docente/seleccionar/fecha/:idasignatura/:idparalelo', auth_docente, function(request, response, next) {
+    response.render('docenteseleccionarfecha', {});
   });
-  
-    router.get('/seleccionar/fecha', auth_docente, function(request, response, next) {
-    response.render('seleccionarfecha', {});
+
+    router.get('/docente/seleccionar/pregunta', auth_docente, function(request, response, next) {
+    response.render('docenteseleccionarpregunta', {});
   });
-  
-    router.get('/seleccionar/pregunta', auth_docente, function(request, response, next) {
-    response.render('seleccionarpregunta', {});
+
+    router.get('/docente/ver/respuestas', auth_docente, function(request, response, next) {
+    response.render('docenteverrespuestas', {});
   });
-  
-    router.get('/ver/respuestas', auth_docente, function(request, response, next) {
-    response.render('verrespuestas', {});
-  });
-  
+
 }

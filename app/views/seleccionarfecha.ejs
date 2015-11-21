@@ -1,19 +1,8 @@
-<% include header %>
-
-<h1>Analizar Pregunta</h1>
-<h3>Lista de Ramo</h3>
-<h4>Seleccione una Fecha</h4>
-
-<span>Fecha</span>
-<form action="/seleccionar/pregunta" method="get">
 <select name="fecha">
 	<option value="fecha1">fecha 1</option>
 	<option value="fecha2">fecha 2</option>
 	<option value="fecha3">fecha 3</option>
 </select>
 <input type="hidden" name="asignatura" value="0" />
+<input type="hidden" name="paralelo" value="0" />
 <input type="submit" name='submit' value='Siguiente' />
-</form>
-
-<% include linkmenudocente %>
-<% include footer %>
