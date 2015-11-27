@@ -1,43 +1,3 @@
-h1 {
-  font-size: 5em;
-}
-.row-centered {
-  text-align:center;
-      width: 600px;
-    margin: 0 auto;
-}
-.col-centered {
-  display:inline-block;
-  float:none;
-  /* reset the text-align */
-  text-align:left;
-  /* inline-block space fix */
-  margin-right:-4px;
-}
-.accordion-toggle {
-  display:block;
-}
-#logo {
-  display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 23em;
-}
-
-
-.form{
-	padding-left: 20px;
-	text-align: justify;
-	width: 400px;
-	margin: 0px auto;
-}
-
-.boxed {
-  border-style: solid;
-  border-width: 1px;
-  border-color: light gray;
-}
-
 div.scroll  {
    width:100%;
    overflow-y:scroll;
@@ -101,8 +61,3 @@ form.tipo1 {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
 }
-
-
-ol, ul .a {list-style-type: circle;}
-
-ol, ul .b {list-style-type: none;}
