@@ -1,0 +1,39 @@
+<% include header %>
+
+<div>
+<span>Pregunta de la </span><span>Clase de las <%=pregunta.clase_hora%></span>
+</br>
+<span>PreguntaRealizada a las <%=pregunta.pregunta_hora%></span>
+
+<h3><%=pregunta.nombre%></h3>
+<%=pregunta.texto%>
+<br>
+<img src="/public/preguntas/imagenes/<%=pregunta.ruta_imagen%>" />+
+<br>
+<%for(i in pregunta.respuestas){%>
+<ul>
+<li><%=pregunta.respuestas[i]%></li>
+</ul>
+<%}%>
+<br>
+<span>La respuesta correcta es <span style="color:green"><%=pregunta.respuesta_correcta%></span></span>
+<br>
+<p>
+La respuesta correcta de esta pregunta se da debido...
+<br />
+<%=pregunta.explicacion%>
+<br>
+<img src="/public/preguntas/imagenesrespuesta/<%=pregunta.explicacion_imagen%>" />
+<br>
+</p>
+Respuestas:
+<br>
+<%Object.keys(pregunta.cantidad_por_respuesta).forEach(function(key){%>
+<br>
+<%=key%>: 
+<%=pregunta.cantidad_por_respuesta[key]%> Veces
+<%})%>
+</div>
+
+<% include linkmenudocente %>
+<% include footer %>
