@@ -1,11 +1,13 @@
 ﻿<% include header %>
 
-<h1>Analizar Pregunta</h1>
-<h3>Lista de Ramo</h3>
-<h4>Seleccione una Fecha</h4>
-<span>Fecha</span>
-<form action="/docente/analizar/verrespuestas" method="get">
-    <% include seleccionarpregunta %>
-</form>
+<h2 class="text-center">Analizar Pregunta</h2>
+<h3 class="col-md-3 col-md-offset-4">Lista de Ramo</h3>
+<h4 class="col-md-3 col-md-offset-4">Seleccione una Pregunta</h4>
+
+<div class="col-md-8 col-md-offset-4 ">
+	<form class="input-lg " action="/docente/analizar/verrespuestas" method="get">
+	    <% include seleccionarpregunta %>
+	</form>
+</div>
 <% include linkmenudocente %>
 <% include footer %>
