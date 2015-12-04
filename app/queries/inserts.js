@@ -9,5 +9,4 @@ exports.consultas = {
       })
       .save()
   }
-  
 }
