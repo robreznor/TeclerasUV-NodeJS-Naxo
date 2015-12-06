@@ -14,18 +14,25 @@ module.exports = function(app) {
   }));
   app.use('/', router);
 
-  router.get('/docente/crearpreguntaalternativa', auth_docente, function(request, response, next) {
+  router.get('/docente/crearpreguntaalternativa/:idasignatura/:idparalelo', auth_docente, function(request, response, next) {
     console.log("id usuario:",request.session.name, "tipo:", request.session.tipo);
-    response.render('docentecrearpreguntaalternativa', {});
+    
+    asignatura={
+          idasignatura: request.params.idasignatura,
+          idparalelo: request.params.idparalelo
+    }
+      response.render('docentecrearpreguntaalternativa', {
+          asignatura: asignatura
+    });
   });
-  router.post("/crearpreguntaalternativa",multipart(),  auth_docente, function(request, response, next) {
+  router.post("/docente/crearpreguntaalternativa",multipart(),  auth_docente, function(request, response, next) {
     console.log(request.files);
     console.log(request.body);
-    queries.gestionar_pregunta.insertar_pregunta(request.body.nombrepregunta, request.body.pregunta , request.body.url_video , request.body.explicacion)
+    queries.gestionar_pregunta.insertar_pregunta(request.body.nombrepregunta, request.body.pregunta ,'1',request.body.url_video, request.body.explicacion, request.body.idparalelo, request.body.idasignatura, request.session.name)
       .then(function(insertado_pregunta) {
         
         console.log("insertado:", insertado_pregunta);
-        response.redirect("/docente/crearpreguntaalternativa");
+        response.redirect("back");
         return;
       })
       .catch(function(error) {
