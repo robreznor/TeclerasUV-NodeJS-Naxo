@@ -12,8 +12,8 @@ module.exports = function(app) {
   }));
   app.use('/', router);
 
-  router.get('/docente/editarpd', auth_docente, function(request, response, next) {
+  router.get('/docente/editarpreguntadicotomica/:idasignatura/:idparalelo', auth_docente, function(request, response, next) {
     console.log("id usuario:",request.session.name, "tipo:", request.session.tipo);
-    response.render('editarpreguntadicotomica', {});
+    response.render('docenteeditarpreguntadicotomica', {});
   });
 }

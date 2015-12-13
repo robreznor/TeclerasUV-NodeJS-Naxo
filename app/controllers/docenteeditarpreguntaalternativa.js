@@ -4,7 +4,6 @@ var express = require('express'),
   queries = require('../queries/index.js');
 
 module.exports = function(app) {
-
   var bodyParser = require('body-parser');
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({
@@ -12,8 +11,32 @@ module.exports = function(app) {
   }));
   app.use('/', router);
 
-  router.get('/docente/editarpa', auth_docente, function(request, response, next) {
+  router.get('/docente/editarpreguntaalternativa/:idasignatura/:idparalelo', auth_docente, function(request, response, next) {
     console.log("id usuario:",request.session.name, "tipo:", request.session.tipo);
-    response.render('editarpreguntaalternativa', {});
-  });
+    var idprofesor=request.session.name;
+    queries.gestionar_pregunta.buscar_preguntas_profesor(idprofesor, request.params.idasignatura, request.params.idparalelo).then(function(preguntas_res){
+    console.log("preguntas docente",preguntas_res)
+    var preguntas=[];
+     for(i in preguntas_res){
+        preguntas.push({
+          id: preguntas_res[i].PM_ID,
+          nombre: preguntas_res[i].PM_NOMBRE,
+          pregunta: preguntas_res[i].PM_TEXTO,
+          tipo: preguntas_res[i].PM_TIPO,
+          paralelo_id: preguntas_res[i].PAR_ID
+        })
+        if(preguntas[i].tipo=="1"){
+          preguntas[i].tipo="alternativa"
+        }else if(preguntas[i].tipo=="2"){
+          preguntas[i].tipo="dicotómica"
+        }else{
+          preguntas[i].tipo="Escala de likert"
+        }
+      }
+    console.log("preguntas: ", preguntas)
+    response.render('docenteeditarpreguntaalternativa', {
+      preguntas: preguntas
+    })
+    })
+  })
 }
