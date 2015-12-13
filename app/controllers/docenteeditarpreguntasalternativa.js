@@ -23,7 +23,8 @@ module.exports = function(app) {
           nombre: preguntas_res[i].PM_NOMBRE,
           pregunta: preguntas_res[i].PM_TEXTO,
           tipo: preguntas_res[i].PM_TIPO,
-          paralelo_id: preguntas_res[i].PAR_ID
+          idparalelo: preguntas_res[i].TV_PARALELO_PAR_ID,
+          idasignatura: preguntas_res[i].TV_PARALELO_ASI_ID
         })
         }
     console.log("preguntas: ", preguntas)

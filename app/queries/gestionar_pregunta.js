@@ -32,7 +32,7 @@ exports.consultas = {
 
    buscar_preguntas_profesor: function(docid, asignaturaid, paraleloid, tipo) {
       return sequelize
-      .query("select TV_PREGUNTA_MAESTRA.PM_ID as PM_ID, PM_NOMBRE, PM_TEXTO, PM_EXPLICACION, PM_TIPO, TV_PARALELO_TV_DOCENTE_DOC_ID  from TV_PREGUNTA_MAESTRA inner join TV_DOCENTE on TV_DOCENTE.DOC_ID=TV_PARALELO_TV_DOCENTE_DOC_ID where TV_PARALELO_TV_DOCENTE_DOC_ID=? and TV_PARALELO_PAR_ID=? and  TV_PARALELO_ASI_ID=? and PM_TIPO=?", {replacements: [docid, paraleloid, asignaturaid, tipo], type: sequelize.QueryTypes.SELECT} )
+      .query("select TV_PREGUNTA_MAESTRA.PM_ID as PM_ID, PM_NOMBRE, PM_TEXTO, PM_EXPLICACION, PM_TIPO,TV_PARALELO_PAR_ID, TV_PARALELO_ASI_ID, TV_PARALELO_TV_DOCENTE_DOC_ID  from TV_PREGUNTA_MAESTRA inner join TV_DOCENTE on TV_DOCENTE.DOC_ID=TV_PARALELO_TV_DOCENTE_DOC_ID where TV_PARALELO_TV_DOCENTE_DOC_ID=? and TV_PARALELO_PAR_ID=? and  TV_PARALELO_ASI_ID=? and PM_TIPO=?", {replacements: [docid, paraleloid, asignaturaid, tipo], type: sequelize.QueryTypes.SELECT} )
  
 }
 }
