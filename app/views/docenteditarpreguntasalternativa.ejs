@@ -1,7 +1,7 @@
 <% include header %>
 <div class="row row-centered">
   <div class="col-md-8 col-centered">
-    Preguntas:
+    Preguntas alternativa:
   </div>
 </div>
 
@@ -15,12 +15,9 @@
         Pregunta
       </div>
       <div class="col-md-2 col-centered">
-        Tipo
-      </div>
-      <div class="col-md-2 col-centered">
-        Editar
       </div>
     </div>
+
     <br>
   <%for(i in preguntas){%>
     <div class="row row-centered">
@@ -30,9 +27,6 @@
       <div class="col-md-4 col-centered">
         <%=preguntas[i].pregunta%>
       </div>
-      <div class="col-md-2 col-centered">
-       <%=preguntas[i].tipo%>
-     </div>
       <div class="col-md-2 col-centered">
         <a href=''>Editar</a>
       </div>
