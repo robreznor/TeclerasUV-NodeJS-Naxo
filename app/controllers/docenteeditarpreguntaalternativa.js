@@ -54,7 +54,17 @@ module.exports = function(app) {
     queries.gestionar_pregunta.actualizar_pregunta(request.body.idpregunta, request.body.nombrepregunta, request.body.pregunta,request.body.url_video,"", request.body.explicacion)
       .then(function(actualizar_pregunta) {
         console.log("insertado pregunta:", actualizar_pregunta)
+      queries.gestionar_pregunta.eliminar_respuesta(request.body.idpregunta).then(function(eliminar_respuesta) {
+        console.log("respuestas eliminadas: ", eliminar_respuesta)
+        for(i in request.body.respuesta){ 
+                  queries.gestionar_pregunta.insertar_respuesta(request.body.respuesta[i],request.body.idpregunta,request.body.correctas[i])
+                    .then(function(insertado_respuesta) {
+                    console.log("insertado respuesta:", insertado_respuesta);
+                  })
+
+      }
       })
+    })
       .catch(function(error) {
         console.log(error)
         /*Como ven, acá hay dos redirect, pero no se ejecutan uno y después el otro, ya que cuando entra a un callback, el flujo de ejecución cambia
