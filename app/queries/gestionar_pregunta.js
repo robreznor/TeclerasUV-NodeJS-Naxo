@@ -48,18 +48,62 @@ exports.consultas = {
           PM_ID: id
         }
       }).then(function(resultado){
-        console.log(resultado);
+        console.log("actualizado pregunta",resultado);
       })
   },
   buscar_pregunta: function(preguntaid){
 
     return sequelize
-      .query("select TV_PREGUNTA_MAESTRA.PM_ID as PM_ID, PM_NOMBRE, PM_TEXTO, PM_EXPLICACION, PM_RUTA_VIDEO,PM_RUTA_IMAGEN, PM_TIPO,TV_PARALELO_PAR_ID, TV_PARALELO_ASI_ID, TV_PARALELO_TV_DOCENTE_DOC_ID  from TV_PREGUNTA_MAESTRA where PM_ID=?", {replacements: [preguntaid], type: sequelize.QueryTypes.SELECT} )
+      .query("PM_ID, PM_NOMBRE, PM_TEXTO, PM_EXPLICACION, PM_RUTA_VIDEO,PM_RUTA_IMAGEN, PM_TIPO,TV_PARALELO_PAR_ID, TV_PARALELO_ASI_ID, TV_PARALELO_TV_DOCENTE_DOC_ID  from TV_PREGUNTA_MAESTRA where PM_ID=?", {replacements: [preguntaid], type: sequelize.QueryTypes.SELECT} )
   },
   buscar_respuesta: function(respuestaid){
 
     return sequelize
       .query("select PM_ID, RES_TEXTO, PM_CORRECTA from TV_RESPUESTAS where PM_ID=?", {replacements: [respuestaid], type: sequelize.QueryTypes.SELECT} )
+  },
+  eliminar_pregunta: function(preguntaid){
+     return db.TV_PREGUNTA_MAESTRA.destroy({
+              where: {
+                PM_ID: preguntaid
+              }
+            })
+  },
+  eliminar_respuesta: function(preguntaid){
+     return db.TV_RESPUESTAS.destroy({
+              where: {
+                PM_ID: preguntaid
+              }
+            }).then(function(resultado){
+        console.log("eliminar respuesta",resultado);
+      })
+  },
+  eliminar_pregunta_respondida: function(preguntarespondidaid){
+     return db.TV_PREGUNTA_RESPONDIDA.destroy({
+              where: {
+                PR_ID: preguntarespondidaid
+              }
+            })
+  },
+  eliminar_pregunta_respondida_pm_id: function(preguntaid){
+     return db.TV_PREGUNTA_RESPONDIDA.destroy({
+              where: {
+                PM_ID: preguntaid
+              }
+            })
+  },
+  eliminar_pregunta_realizada: function(preguntarealizadaid){
+       return db.TV_PREGUNTA_REALIZADA.destroy({
+              where: {
+                PR_ID: preguntaid
+              }
+            })
+  },
+  eliminar_pregunta_realizada_pm_id: function(preguntamaestraid){
+         return db.TV_PREGUNTA_REALIZADA.destroy({
+              where: {
+                PM_ID: preguntaid
+              }
+            })
   }
 
 }

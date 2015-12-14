@@ -1,7 +1,7 @@
 <% include header %>
 <div class="row row-centered">
   <div class="col-md-8 col-centered">
-   <h2> Preguntas alternativa</h2><br>
+   <h2> Eliminar preguntas </h2><br>
   </div>
 </div>
 <table class="table table-striped">
@@ -13,10 +13,10 @@
     </tr>
     <%for(i in preguntas){%>
     <tr>
-    <td><%=preguntas[i].nombre%></td>
-    <td><%=preguntas[i].pregunta%></td>
-    <td><%=preguntas[i].explicacion%></td>
-    <td><a href='/docente/editarpregunta//<%=preguntas[i].idasignatura%>/<%=preguntas[i].idparalelo%>/<%=preguntas[i].id%>'>Eliminar</a></td>
+      <td><%=preguntas[i].nombre%></td>
+      <td><%=preguntas[i].pregunta%></td>
+      <td><%=preguntas[i].explicacion%></td>
+      <td><a href='/docente/eliminarpreguntasel/<%=preguntas[i].idasignatura%>/<%=preguntas[i].idparalelo%>/<%=preguntas[i].tipo%>/<%=preguntas[i].id%>'>Eliminar</a></td>
     </tr>
     <%}%>
 </table>
