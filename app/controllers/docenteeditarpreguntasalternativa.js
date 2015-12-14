@@ -22,6 +22,7 @@ module.exports = function(app) {
           id: preguntas_res[i].PM_ID,
           nombre: preguntas_res[i].PM_NOMBRE,
           pregunta: preguntas_res[i].PM_TEXTO,
+          explicacion: preguntas_res[i].PM_EXPLICACION,
           tipo: preguntas_res[i].PM_TIPO,
           idparalelo: preguntas_res[i].TV_PARALELO_PAR_ID,
           idasignatura: preguntas_res[i].TV_PARALELO_ASI_ID
