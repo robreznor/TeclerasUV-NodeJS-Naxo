@@ -30,10 +30,18 @@ module.exports = function(app) {
         ruta_imagen: buscar_pregunta_res[0].PM_RUTA_IMAGEN
         }
       queries.gestionar_pregunta.buscar_respuesta(request.params.idpregunta).then(function(buscar_respuesta_res) {
-        console.log("buscar_respuesta",buscar_respuesta_res)
+        console.log("buscar respuesta",buscar_respuesta_res)
+        var respuestas=[];
+        for(i in buscar_respuesta_res){
+        respuestas.push({
+          respuesta: buscar_respuesta_res[i].RES_TEXTO,
+          correcta: buscar_respuesta_res[i].PM_CORRECTA
+        })
+      }
         response.render('docenteeditarpreguntaalternativa', {
                           asignatura: asignatura,
-                          pregunta: pregunta
+                          pregunta: pregunta,
+                          respuestas: respuestas
     })
       })
         })
