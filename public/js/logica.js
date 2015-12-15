@@ -11,24 +11,7 @@ function checkExt() {
 		}
 	}
 }
-// function agregar() {
- 
-//             var table = document.getElementById("tableId");
- 
-//             var rowCount = table.rows.length;
-//             var row = table.insertRow(rowCount);
-//             var cell1 = row.insertCell(0);
-//             var cell2 = row.insertCell(1);
-//             var cell3 = row.insertCell(2);
-//             var respuesta = prompt("Por favor, ingrese una respuesta", "");
-//             cell1.innerHTML=respuesta;
-//             cell1.setAttribute("id","cell1")
-//             cell2.innerHTML = '<input type="radio" name="radio" id="">';
-//             cell3.innerHTML='<input type="checkbox" name="checkbox" id="">';
-           
- 
- 
-//         }
+
 function agregar() {
             
            
@@ -51,23 +34,17 @@ function agregar() {
             element2.type = "checkbox";
             element2.name = "check";
             cell3.appendChild(element2);
-
+            var element3 = document.createElement("input");
+            var cell4 = row.insertCell(3);
+            element3.type="hidden";
+            element3.name="correctas";
+            element3.value="0";
+            cell4.appendChild(element3);
  
  
         }
 
  
-
-
-// function quitar() {
-//     var table = document.getElementById("tableId");
-//     var rowCount = table.rows.length;
-// 	if(rowCount > 1){
-// 		document.getElementById("tableId").deleteRow(rowCount-1);	
-// 	}else{
-// 		alert("Esta fila no se puede eliminar");
-// 	}
-// }
   function quitar() {
             try {
             var table = document.getElementById("tableId");
@@ -88,8 +65,38 @@ function agregar() {
                 alert(e);
             }
         }
-function editar(){
-    var respuesta = prompt("Por favor, ingrese una respuesta", "");
-    document.getElementById("cell1").innerHTML = respuesta;
-}
+
+function correcta(){
+    var correcta= document.getElementsByName("rad");
+    for(i in correcta){
+        if(correcta[i].checked){
+            document.getElementsByName("correctas")[i].value="1"
+        }
+        }
+    }
+function formulario(f) { 
+    if (f.nombrepregunta.value   == '') { 
+        alert ('El nombre de la pregunta esta vacío');  
+        f.nombrepregunta.focus(); 
+        return false; 
+        } 
+    if (f.pregunta.value  == '') { 
+        alert ('La pregunta esta vacía '); 
+        f.pregunta.focus(); 
+        return false; 
+        }
+    if (f.explicacion.value  == '') { 
+        alert ('La explicación esta vacía'); 
+        f.pregunta.focus(); 
+        return false; 
+                } 
+    if(document.getElementsByName("respuesta").length<2){
+        alert ('Debe tener almenos 2 respuestas'); 
+        return false; 
+    } 
+    
+    return true; 
+} 
+
+
 
