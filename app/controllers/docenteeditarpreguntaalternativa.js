@@ -50,7 +50,10 @@ module.exports = function(app) {
   router.post("/docente/editarpreguntaalternativa", multipart(), auth_docente, function(request, response, next) {
     console.log(request.files)
     console.log("formulario",request.body)
-    
+    asignatura={
+          idasignatura: request.body.idasignatura,
+          idparalelo: request.body.idparalelo
+        }  
     queries.gestionar_pregunta.actualizar_pregunta(request.body.idpregunta, request.body.nombrepregunta, request.body.pregunta,request.body.url_video,"", request.body.explicacion)
       .then(function(actualizar_pregunta) {
         console.log("insertado pregunta:", actualizar_pregunta)
@@ -63,7 +66,9 @@ module.exports = function(app) {
                   })
 
       }
+      
       })
+      
     })
       .catch(function(error) {
         console.log(error)
@@ -72,8 +77,10 @@ module.exports = function(app) {
         //response.redirect("crearpreguntaalternativa");
         next()
       })
-      
-     response.redirect("back")
+     response.render("docenteeditarpreguntaalternativasuccess",{
+                    asignatura: asignatura
+        })
+     response.redirect("/docente/editarpreguntaalternativa/success")
     return
       
   })
