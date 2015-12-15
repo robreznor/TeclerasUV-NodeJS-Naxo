@@ -32,6 +32,7 @@ module.exports = function(app) {
           paralelo_id: asignaturas_res[i].PAR_ID
         })
       }
+      console.log("asignaturas: ", asignaturas)
       response.render('docenteconsultar', {
         asignaturas: asignaturas
       });

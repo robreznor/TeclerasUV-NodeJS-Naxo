@@ -27,13 +27,21 @@ module.exports = function(app) {
   });
   router.post("/docente/crearpreguntaalternativa",multipart(),  auth_docente, function(request, response, next) {
     console.log(request.files);
-    console.log("formumalrio",request.body);
+    console.log("formulario",request.body);
+    
 
-
-    queries.gestionar_pregunta.insertar_pregunta(request.body.nombrepregunta, request.body.pregunta ,'1',request.body.url_video, request.body.explicacion, request.body.idparalelo, request.body.idasignatura, request.session.name)
+    queries.gestionar_pregunta.insertar_pregunta(request.body.nombrepregunta, request.body.pregunta ,'1',request.body.url_video,"", request.body.explicacion, request.body.idparalelo, request.body.idasignatura, request.session.name)
       .then(function(insertado_pregunta) {
-        
-   
+        console.log("insertado pregunta:", insertado_pregunta);
+
+        for(i in request.body.respuesta){ 
+                  queries.gestionar_pregunta.insertar_respuesta(request.body.respuesta[i],insertado_pregunta.PM_ID,request.body.correctas[i])
+                    .then(function(insertado_respuesta) {
+                    console.log("insertado respuesta:", insertado_respuesta);
+                  })
+
+    }
+      
       })
       .catch(function(error) {
         console.log(error);
@@ -42,14 +50,7 @@ module.exports = function(app) {
         //response.redirect("crearpreguntaalternativa");
         next();
       })
-       for(i in request.body.respuesta){
-                  queries.gestionar_pregunta.insertar_respuesta(request.body.respuesta[i],"1","0")
-                    .then(function(insertado_respuesta) {
-                      
-                      console.log("insertado:", insertado_respuesta);
-                     
-                    })
-    }
+      
      response.redirect("back");
     return;
       
