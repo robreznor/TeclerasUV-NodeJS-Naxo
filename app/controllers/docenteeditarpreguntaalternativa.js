@@ -66,6 +66,11 @@ module.exports = function(app) {
                   })
 
       }
+            response.render("docenteeditarpreguntaalternativasuccess",{
+            asignatura: asignatura
+        })
+            response.redirect("/docente/editarpreguntaalternativa/success")
+            return
       
       })
       
@@ -77,11 +82,6 @@ module.exports = function(app) {
         //response.redirect("crearpreguntaalternativa");
         next()
       })
-     response.render("docenteeditarpreguntaalternativasuccess",{
-                    asignatura: asignatura
-        })
-     response.redirect("/docente/editarpreguntaalternativa/success")
-    return
-      
+   
   })
 }
