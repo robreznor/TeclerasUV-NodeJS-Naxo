@@ -20,6 +20,6 @@ module.exports = function(app) {
     }
     response.render('docenteeditarpregunta', {
                       asignatura: asignatura
-    });
-  });
+    })
+  })
 }
